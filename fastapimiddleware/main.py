@@ -20,6 +20,7 @@ class Logging(BaseHTTPMiddleware):
     async def dispatch(self, request : Request, call_next):
         print(">>>>>>>>>0998>>>>>>>0998>>>>>>>0998>",request.url)
         response = await call_next(request)
+        response.headers["X-Custom-Header"] = "FastAPI Middleware Demo"
         return response
    
 app.add_middleware(
